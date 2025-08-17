@@ -2,10 +2,12 @@
 /* webkit printing magic: print all background colors */
 html {
 	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
 }
 * {
 	box-sizing: border-box;
 	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
 }
 
 html,
@@ -13,6 +15,104 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+main {
+	padding-top: 5%;
+	/* Высота хедера + отступ */
+}
+
+.sticky-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: rgb(248, 248, 247);
+	z-index: 1000;
+	height: 50px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	display: flex;
+	align-items: center;
+}
+
+.sticky-header .callout {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 0 2em;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	border-radius: 0;
+}
+
+/* Футер */
+.footer {
+	background: rgba(248, 248, 247, 1);
+	border-top: 1px solid rgba(55, 53, 47, 0.09);
+	margin-top: 3em;
+	padding: 2em 0 1em 0;
+	font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.footer-content {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 0 2em;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 2em;
+	margin-bottom: 2em;
+}
+
+.footer-section h3 {
+	color: rgba(55, 53, 47, 1);
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin-bottom: 1em;
+	margin-top: 0;
+}
+
+.footer-section p {
+	color: rgba(115, 114, 110, 1);
+	font-size: 0.9rem;
+	line-height: 1.5;
+	margin: 0.5em 0;
+}
+
+.footer-section a {
+	color: rgba(51, 126, 169, 1);
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	font-size: 0.9rem;
+	transition: color 0.2s ease;
+}
+
+.footer-section a:hover {
+	color: rgba(37, 99, 135, 1);
+	text-decoration: underline;
+}
+
+.footer-bottom {
+	border-top: 1px solid rgba(55, 53, 47, 0.09);
+	padding-top: 1em;
+}
+
+.footer-copyright {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 0 2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgba(115, 114, 110, 1);
+	font-size: 0.8rem;
+	text-align: center;
+}
+
+.footer-copyright .icon {
+	margin-right: 0.5em;
+}
+
 @media only screen {
 	body {
 		margin: 2em auto;
@@ -20,6 +120,24 @@ body {
 		color: rgb(55, 53, 47);
 	}
 }
+
+@media (max-width: 768px) {
+		.footer-content {
+			grid-template-columns: 1fr;
+			gap: 1.5em;
+			padding: 0 1em;
+		}
+		
+		.footer-copyright {
+			padding: 0 1em;
+			flex-direction: column;
+			gap: 0.5em;
+		}
+		
+		.footer-copyright .icon {
+			margin-right: 0;
+		}
+	}	
 
 body {
 	line-height: 1.5;
