@@ -10,12 +10,6 @@ html {
 	print-color-adjust: exact;
 }
 
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-
 main {
 	padding-top: 5%;
 	/* Высота хедера + отступ */
@@ -122,26 +116,41 @@ main {
 }
 
 @media (max-width: 768px) {
-		.footer-content {
-			grid-template-columns: 1fr;
-			gap: 1.5em;
-			padding: 0 1em;
-		}
-		
-		.footer-copyright {
-			padding: 0 1em;
-			flex-direction: column;
-			gap: 0.5em;
-		}
-		
-		.footer-copyright .icon {
-			margin-right: 0;
-		}
+	.footer-content {
+		grid-template-columns: 1fr;
+		gap: 1.5em;
+		padding: 0 1em;
+	}
+	
+	.footer-copyright {
+		padding: 0 1em;
+		flex-direction: column;
+		gap: 0.5em;
+	}
+	
+	.footer-copyright .icon {
+		margin-right: 0;
+	}
 
-		.map-container {
-			height: 300px;
-		}
-	}	
+	.map-container {
+		height: 300px;
+	}
+
+	/* Responsive стили для колонок */
+	.column-list {
+		flex-direction: column;
+	}
+		
+	.column {
+		padding: 0;
+		margin-bottom: 1em;
+	}
+	
+	.column:last-child {
+		margin-bottom: 0;
+	}
+
+}	
 
 /* YouTube video responsive container */
 .video-container {
@@ -201,7 +210,8 @@ h3 {
 	letter-spacing: -0.01em;
 	line-height: 1.2;
 	font-weight: 600;
-	margin-bottom: 0;
+	margin-bottom: 0.5em;
+	margin-top: 1em;
 }
 
 .page-title {
@@ -213,17 +223,14 @@ h3 {
 
 h1 {
 	font-size: 1.875rem;
-	margin-top: 1.875rem;
 }
 
 h2 {
 	font-size: 1.5rem;
-	margin-top: 1.5rem;
 }
 
 h3 {
 	font-size: 1.25rem;
-	margin-top: 1.25rem;
 }
 
 .source {
@@ -247,6 +254,7 @@ figcaption {
 	opacity: 0.5;
 	font-size: 85%;
 	margin-top: 0.5em;
+	font-size: 0.8em;
 }
 
 mark {
@@ -544,8 +552,8 @@ input[type="checkbox"] {
 }
 
 p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
 }
 
 .image {
@@ -554,6 +562,7 @@ p {
 	padding: 0;
 	border-radius: 0;
 	text-align: center;
+	font-size: 0;
 }
 
 .code,
@@ -834,3 +843,40 @@ blockquote {
 	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
 }
 
+/* ... existing code ... */
+
+/* Единая система отступов для всего проекта */
+h1 + p,
+h2 + p,
+h3 + p,
+summary + .indented p:first-child,
+summary + .indented .column-list p:first-child {
+	margin-top: 0;
+}
+
+/* Убираем лишние отступы у первого элемента в контейнерах */
+.indented > *:first-child,
+.column > *:first-child {
+	margin-top: 0;
+}
+
+/* Убираем лишние отступы у последнего элемента в контейнерах */
+.indented > *:last-child,
+.column > *:last-child {
+	margin-bottom: 0;
+}
+
+/* Специальные стили для summary */
+summary {
+	margin-bottom: 0.5em;
+}
+
+/* Уменьшение отступов в колонках */
+.column-list {
+	margin-bottom: 0.5em;
+}
+
+.column-list p {
+	margin-top: 0.25em;
+	margin-bottom: 0.25em;
+}
